@@ -1,0 +1,117 @@
+# Dependencies
+node_modules/
+vendor/
+.pnp
+.pnp.js
+
+# Testing
+coverage/
+.nyc_output
+*.lcov
+.coverage
+htmlcov/
+.pytest_cache/
+.cache
+
+# Production builds
+build/
+dist/
+.next/
+out/
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDEs and editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Security scan results
+.snyk
+trivy-results.sarif
+dependency-check-report/
+checkov-report.sarif
+gitleaks-report.json
+trufflehog-results.json
+
+# Temporary files
+*.tmp
+*.temp
+.tmp/
+tmp/
+
+# Python specific
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Java specific
+*.class
+*.jar
+*.war
+*.ear
+target/
+
+# .NET specific
+bin/
+obj/
+*.user
+*.suo
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+
+# Kubernetes
+*.kubeconfig
+
+# Security tools cache
+.trivycache/
+.snyk.d/
+
+# Local configuration
+config.local.json
+settings.local.json

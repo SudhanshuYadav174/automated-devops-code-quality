@@ -1,0 +1,90 @@
+# Gitleaks Configuration File
+# https://github.com/zricethezav/gitleaks
+
+title = "DevSecOps Gitleaks Configuration"
+
+[[rules]]
+id = "AWS Access Key"
+description = "AWS Access Key"
+regex = '''(?i)aws(.{0,20})?(?-i)['\"][0-9a-zA-Z\/+]{40}['\"]'''
+tags = ["key", "AWS"]
+
+[[rules]]
+id = "AWS Secret Key"
+description = "AWS Secret Key"
+regex = '''(?i)aws(.{0,20})?['\"][0-9a-zA-Z\/+=]{40}['\"]'''
+tags = ["key", "AWS"]
+
+[[rules]]
+id = "GitHub Token"
+description = "GitHub Personal Access Token"
+regex = '''ghp_[0-9a-zA-Z]{36}'''
+tags = ["key", "GitHub"]
+
+[[rules]]
+id = "Slack Token"
+description = "Slack Token"
+regex = '''xox[baprs]-([0-9a-zA-Z]{10,48})?'''
+tags = ["key", "slack"]
+
+[[rules]]
+id = "Generic API Key"
+description = "Generic API Key"
+regex = '''(?i)(api_key|apikey|secret|password|token)(.{0,20})?['\"]=?['\"][0-9a-zA-Z]{32,45}['\"]'''
+tags = ["key", "API", "generic"]
+
+[[rules]]
+id = "Docker Registry Auth"
+description = "Docker Registry Authentication"
+regex = '''"auth"\s*:\s*"[A-Za-z0-9+/]{50,}={0,2}"'''
+tags = ["key", "docker"]
+
+[[rules]]
+id = "Database Connection"
+description = "Database Connection String"
+regex = '''(mongodb|mysql|postgres|redis)://[a-zA-Z0-9\.\-_]+:[a-zA-Z0-9\.\-_]*@[a-zA-Z0-9\.\-_]+'''
+tags = ["key", "database"]
+
+[[rules]]
+id = "JWT Token"
+description = "JSON Web Token"
+regex = '''eyJ[A-Za-z0-9_/+-]*\.eyJ[A-Za-z0-9_/+-]*\.[A-Za-z0-9_/+-]*'''
+tags = ["key", "JWT"]
+
+[[rules]]
+id = "SonarQube Token"
+description = "SonarQube Token"
+regex = '''squ_[a-f0-9]{40}'''
+tags = ["key", "sonarqube"]
+
+# Allowlist configurations
+[allowlist]
+description = "Allowlist for common false positives"
+files = [
+    "^.*\\.md$",
+    "^.*\\.txt$",
+    "^.*test.*$",
+    "^.*example.*$",
+    "^.*sample.*$"
+]
+
+commits = [
+    # Add specific commit SHAs to allowlist if needed
+]
+
+paths = [
+    "^.git/",
+    "^node_modules/",
+    "^vendor/",
+    "^.env.example$",
+    "^.env.template$"
+]
+
+regexes = [
+    # Allow example/template values
+    '''(password|secret|key)['\"]\s*:\s*['\"](example|template|placeholder|YOUR_.*|<.*>|\\$\\{.*\\})['\"]''',
+    # Allow short keys (likely not real)
+    '''['\"][a-zA-Z0-9]{1,15}['\"]''',
+    # Allow common test values
+    '''(test|fake|mock|demo)'''
+]
