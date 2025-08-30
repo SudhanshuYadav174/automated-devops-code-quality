@@ -1,0 +1,32 @@
+# Trivy Ignore File
+# https://aquasecurity.github.io/trivy/latest/docs/references/configuration/config-file/
+
+# Example: Ignore specific CVEs
+# CVE-2022-1234
+# CVE-2022-5678
+
+# Example: Ignore specific files
+# file:path/to/file.py CVE-2022-1234
+
+# Example: Ignore specific directories
+# dir:test/ CVE-2022-1234
+
+# Ignore test files for secret scanning
+secret:test/
+secret:tests/
+secret:__tests__/
+secret:*.test.js
+secret:*.spec.js
+secret:*.test.py
+secret:*.spec.py
+
+# Ignore example/template files
+secret:.env.example
+secret:.env.template
+secret:config.example.json
+secret:config.template.json
+
+# Ignore documentation
+secret:*.md
+secret:docs/
+secret:README*

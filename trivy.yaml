@@ -1,0 +1,85 @@
+# Trivy Configuration File
+# https://aquasecurity.github.io/trivy/latest/docs/references/configuration/config-file/
+
+# Scan settings
+scan:
+  # Skip files with these patterns
+  skip-files:
+    - "*.test.js"
+    - "*.spec.js"
+    - "test/"
+    - "tests/"
+    - "__tests__/"
+    - "node_modules/"
+    - ".git/"
+    - "vendor/"
+
+  # Skip directories
+  skip-dirs:
+    - "node_modules"
+    - ".git"
+    - "vendor"
+    - "dist"
+    - "build"
+
+# Vulnerability settings
+vulnerability:
+  # Vulnerability types to scan
+  type:
+    - os
+    - library
+
+  # Severities to include
+  severity:
+    - UNKNOWN
+    - LOW
+    - MEDIUM
+    - HIGH
+    - CRITICAL
+
+  # Ignore unfixed vulnerabilities
+  ignore-unfixed: false
+
+# Security settings
+secret:
+  # Enable secret scanning
+  config: ".trivyignore"
+
+# Misconfiguration settings
+misconfiguration:
+  # Scan for misconfigurations
+  enabled: true
+  
+  # Include these check types
+  include-non-failures: false
+
+# License settings
+license:
+  # Enable license scanning
+  full: true
+  
+  # License types to flag
+  forbidden:
+    - GPL-2.0
+    - GPL-3.0
+    - AGPL-1.0
+    - AGPL-3.0
+
+# Output settings
+format: table
+output: ""
+
+# Cache settings
+cache:
+  clear: false
+  dir: ""
+
+# Database settings
+db:
+  skip-update: false
+  download-java-db: false
+  download-only: false
+
+# Registry settings
+registry:
+  token: ""
